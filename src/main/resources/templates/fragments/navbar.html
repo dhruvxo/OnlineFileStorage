@@ -1,0 +1,30 @@
+<!-- NAVBAR -->
+<div th:fragment="navbar">
+    <nav class="bg-gray-800">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="flex flex-row justify-between py-4 items-center">
+
+                <a href="/" class="flex-row gap-2 flex items-center">
+                    <img class="block  h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                        alt="Workflow">
+                    <span class="font-bold text-xl text-blue-500"><span class="text-red-500">You</span>Store</span>
+                </a>
+
+                <div class="  sm:block sm:ml-6">
+                    <div class="flex space-x-4">
+                        <!-- Conditinally generate the navbar -->
+                        <a href="/upload"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Upload</a>
+                        <a href="/download"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Download</a>
+                        <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                        <a href="/login"
+                            class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                        <a href="/register"
+                            class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

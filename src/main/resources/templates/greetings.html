@@ -1,0 +1,10 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: headTag(title='YouStore')"></head>
+
+<body>
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold text-center">Hello, <span th:text="${name}">User</span>!</h1>
+    </div>
+</body>

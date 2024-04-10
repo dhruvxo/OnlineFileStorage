@@ -1,0 +1,14 @@
+package inf_storage.inf_storage;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+
+@SpringBootApplication
+public class InfStorageApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(InfStorageApplication.class,args);
+	}
+
+}
