@@ -1,20 +1,20 @@
-﻿# Online File Storage System
+# Online File Storage System
  
 ## Description
 A project made using java which stores files on the cloud and retrieves them using a web interface.
 
-### Why?
+## Why?
 Through this implementation, one can store files indefinitely on the cloud.
 
-## HOW TO RUN
+## How to Run
 ```bash
     mvn clean install
 ```
-### After the above has executed successfully : 
+### After the above has executed successfully: 
 ```bash
     mvn -N wrapper:wrapper
 ```
-### After the above has executed successfully : 
+### After the above has executed successfully: 
 ```bash
     ./mvnw spring-boot:run
 ```
