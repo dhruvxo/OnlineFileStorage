@@ -15,12 +15,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+
+
 public class Upload {
 
     private static YouTube youtube;
     private static final String VIDEO_FILE_FORMAT = "video/*";
 
-    public static void __upload(String filePath) {
+    public static void __upload(String filePath,String name) {
 
         List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube.upload");
 
@@ -32,7 +34,7 @@ public class Upload {
             youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential).setApplicationName(
                     "youtube-store").build();
 
-            System.out.println("Uploading"+filePath);
+            System.out.println("Uploading "+filePath);
 
             Video videoObjectDefiningMetadata = new Video();
 
@@ -45,16 +47,16 @@ public class Upload {
             VideoSnippet snippet = new VideoSnippet();
 
             Calendar cal = Calendar.getInstance();
-            snippet.setTitle("Test Upload via Java on " + cal.getTime());
+            snippet.setTitle(name);
             snippet.setDescription(
-                    "Video uploaded via YouTube Data API V3 using the Java library " + "on " + cal.getTime());
+                    "YouStore  java Data API 3 " + "on " + cal.getTime());
 
             List<String> tags = new ArrayList<String>();
-            tags.add("test");
-            tags.add("example");
+            tags.add("Video");
+            tags.add("Popular");
             tags.add("java");
             tags.add("YouTube Data API V3");
-            tags.add("erase me");
+            tags.add("trending");
             snippet.setTags(tags);
 
             // Add the completed snippet object to the video resource.
@@ -86,7 +88,7 @@ public class Upload {
                             break;
                         case MEDIA_IN_PROGRESS:
                             System.out.println("Upload in progress");
-                            System.out.println("Upload percentage: " + uploader.getProgress());
+                            System.out.println("Upload percentage: " + uploader.getNumBytesUploaded());
                             break;
                         case MEDIA_COMPLETE:
                             System.out.println("Upload Completed!");

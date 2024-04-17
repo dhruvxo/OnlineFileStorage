@@ -3,8 +3,13 @@
         <span th:text="${file[0]}" class="font-semibold text-md" />
     </div>
     <div>
-        <div>
-            <a th:href="@{${url}}" class="p-2 bg-blue-500 rounded font-semibold hover:bg-blue-600">Download</a>
-        </div>
+        <button class="p-2 bg-blue-500 rounded font-semibold hover:bg-blue-600" th:id="${file[1]}"  th:attr="onclick=|download('${file[1]}')|"  >
+            Download
+            <svg th:id="${file[1]}" class="animate-spin  h-5 w- mx-auto ... rounded-full border-white border-b-4 hidden" viewBox="0 0 24 24">
+                <!-- ... -->
+              </svg>
+        </button>
+        
     </div>
+   
 </div>

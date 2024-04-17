@@ -34,7 +34,9 @@ public class UIController {
     @GetMapping("/download")
     public String download(Model model) {
         List<List<String>> files = YoutubeController.listVideos();
-        
+        if(files == null) {
+            files = new ArrayList<List<String>>();
+        }
         model.addAttribute("files", files);
         for(List<String> file: files) {
             System.out.println(file.get(0));

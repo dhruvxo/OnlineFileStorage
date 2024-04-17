@@ -106,6 +106,8 @@ public class ListFiles {
         while (playlistEntries.hasNext()) {
             List<String> video = new ArrayList<String>();
             PlaylistItem playlistItem = playlistEntries.next();
+            if(playlistItem.getSnippet().getTitle().equals("Private video") || playlistItem.getSnippet().getTitle().equals("Deleted video") )
+            continue;
             video.add(playlistItem.getSnippet().getTitle());
             video.add(playlistItem.getContentDetails().getVideoId());
             video.add(playlistItem.getSnippet().getPublishedAt().toString());

@@ -1,14 +1,57 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="fragments/head :: headTag(title='YouStore')"></head>
+
 <body class="h-screen no-scrollbar">
     <div th:replace="fragments/navbar ::navbar"></div>
     <div class="container mx-auto ">
         <h1 class="text-4xl font-bold text-center my-8">Download</h1>
         <div class="flex flex-row items-center justify-center">
             <div class="flex flex-col gap-4 w-full max-w-md no-scrollbar">
-                <div th:each="file: ${files}" th:insert="/fragments/file::file(url='#', file=${file})" />
+                <div th:each="file: ${files}" th:insert="/fragments/file::file(url='', file=${file})" />
             </div>
         </div>
     </div>
+    <script>
+        function download(fileID) {
+            $('button').filter(document.getElementById(fileID)).attr('disabled', true);
+            $('svg').filter(document.getElementById(fileID)).show();
+            $.ajax({
+                url: '/api/download',
+                type: 'POST',
+                data: {
+                    fileID: fileID
+                },
+                success: function (data) {
+                    if (data.data) {
+
+                        console.log("Data recived")
+                        var bytes = new Uint8Array(atob(data.data).split("").map(function (c) {
+                            return c.charCodeAt(0);
+                        }));
+                        // Create a Blob from the Uint8Array
+                        var blob = new Blob([bytes], { type: "application/octet-stream" });
+                        // Create a download link and trigger the download
+                        var link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = data.fileName;
+                        link.click();
+                        console.log("Downloaded")
+                        $('button').filter(document.getElementById(fileID)).attr('disabled', false);
+                        $('svg').filter(document.getElementById(fileID)).hide();
+                    }
+
+
+                },
+                error: function (error) {
+                    console.log(error);
+                    $('button').filter(document.getElementById(fileID)).attr('disabled', false);
+                    $('svg').filter(document.getElementById(fileID)).hide();
+                }
+            });
+
+        }
+    </script>
+
 </body>
